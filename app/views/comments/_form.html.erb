@@ -1,0 +1,12 @@
+<%= form_for [@post, @post.comments.build] do |f| %>
+  <p>
+    <%= f.label :name, "Name" %> <br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :body, "Body" %> <br>
+    <%= f.text_area :body %>
+  </p>
+  <p><%= f.submit "Add Comment", :disable_with => 'Adding Comment...' %></p>
+<% end %>
