@@ -1,6 +1,17 @@
 <div id="page_wrapper">
   <%= form_for :post, url: posts_path do |f| %>
 
+  <% if @post.errors.any? %>
+    <div id="errors">
+      <h2>You have <%= pluralize(@post.errors.count, "error") %></h2>
+      <ul>
+        <% @post.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <p>
     <%= f.label :title, "Title" %> <br>
     <%= f.text_field :title %>
