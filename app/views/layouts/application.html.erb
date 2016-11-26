@@ -26,8 +26,9 @@
         <li><a href="https://www.github.com/margaryan28">Github</a></li>
         <li><a href="mailto:margaryan.mher.28@gmail.com">Email</a></li>
       </ul>
-
-      <p class="sign_in">Admin Login</p>
+      <% if !user_signed_in? %>
+        <p class="sign_in"><%= link_to 'Admin Login', new_user_session_path %></p>
+      <% end %>
     </div>
 
       <!-- MAIN CONTENT -->
@@ -41,10 +42,12 @@
               <p><%= link_to 'Back to All Posts', root_path %></p>
           <% end %>
 
+          <% if user_signed_in? %>
           <div class="buttons">
             <%= link_to 'New Post', new_post_path, class: 'button' %>
-            <button class="button">Logout</button>
+            <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'button' %>
           </div>
+          <% end %>
         </div>
 
         <!-- FLASH MESSAGES -->
