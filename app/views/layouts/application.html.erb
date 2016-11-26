@@ -4,11 +4,49 @@
     <title>Indigo</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Raleway' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+
+    <div id="sidebar">
+
+      <ul>
+        <li class="categroy">Website</li>
+        <li><%= link_to 'Blog', root_path %></li>
+        <li>About</li>
+      </ul>
+
+      <ul>
+        <li class="categroy">Social Media</li>
+        <li><a href="https://www.facebook.com/stuff">Facebook</a></li>
+        <li><a href="https://www.pornhub.com/stuff">Pornhub</a></li>
+        <li><a href="https://www.github.com/margaryan28">Github</a></li>
+        <li><a href="mailto:margaryan.mher.28@gmail.com">Email</a></li>
+      </ul>
+
+      <p class="sign_in">Admin Login</p>
+    </div>
+
+      <!-- MAIN CONTENT -->
+      <div id="main_content">
+        <div id="header">
+          <p>All Posts</p>
+
+          <div class="buttons">
+            <%= link_to 'New Post', new_post_path, class: 'button' %>
+            <button class="button">Logout</button>
+          </div>
+        </div>
+
+        <!-- FLASH MESSAGES -->
+        <% flash.each do |name, msg| %>
+          <%= content_tag(:div, msg, class: 'alert') %>
+        <% end %>
+
+        <%= yield %>
+      </div>
   </body>
 </html>
